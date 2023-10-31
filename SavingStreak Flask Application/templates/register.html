@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-register.css') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>    
+      
+<div class="text-center">
+            <a href="{{ url_for('login') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>SavingStreak</h1>
+        </a>
+             {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %} {% if category == 'success' %}
+                <li class="flash-success">{{ message }}</li>
+                {% elif category == 'error' %}
+                <li class="flash-error">{{ message }}</li>
+                {% endif %} {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
+
+<form method="POST" onsubmit="return validateForm();">
+ {{ form.csrf_token }}
+          
+<div class="form-group">
+    <label style="display: block; color: white; margin-top: 10px; margin-left: 10px;"> {{ form.first_name.label }}</label>
+    {{ form.first_name(class="form-control", placeholder="Enter your first name", style="width: 290px; margin-bottom: 15px; margin-left: 10px;") }}  
+</div>
+     
+<div class="form-group">
+    <label style="display: block; color: white;">{{ form.last_name.label }}</label>
+    {{ form.last_name(class="form-control", placeholder="Enter your last name", style="width: 290px; margin-bottom: 15px;") }}
+</div>
+
+<div>
+    <label style="display: block;  margin-left: 10px; color: white;">{{ form.username.label }}</label>
+    <input type="text" class="form-control" placeholder="Enter your username" style="width: 595px; display: block;  margin-left: 10px; margin-bottom:0px;" name="{{ form.username.name }}" value="{{ form.username.value }}" id="username-input">
+    <span id="username-message"></span>
+</div>
+
+<div>
+    <label style="display: block; color: white; margin-left: 10px; margin-top:10px;">{{ form.email.label }}</label>
+    {{ form.email(class="form-control", placeholder="Enter your email", style="width: 595px; display: block; margin-bottom: 15px; margin-left: 10px;") }}
+</div>
+
+<p>
+    <label style="display: block; color: white; margin-left: 10px;">{{ form.favorite_number.label }}</label>
+    {{ form.favorite_number(class="form-control", placeholder="Enter your favorite number", maxlength="9", oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);", style="width: 595px; display: block; margin-bottom: 15px; margin-left: 10px;") }}
+</p>    
+                
+<div class="form-group">
+    <label style="display: block; color: white; margin-left: 10px; margin-bottom:0px;">{{ form.password.label }}</label>
+    {{ form.password(class="form-control", placeholder="Enter your password", style="width: 290px; margin-bottom: 10px; margin-left: 10px;") }}
+</div>
+
+
+<div class="form-group">
+    <label style="display: block; color: white; margin-left: 10px; margin-bottom:0px;">{{ form.confirm.label }}</label>
+    {{ form.confirm(class="form-control", placeholder="Enter your pasword again", style="width: 290px; margin-bottom: 10px;") }}
+</div>
+               <div class="submit">
+                {{ form.submit }}
+            </div>
+
+            </form>
+            <p style="color: white;">Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+        </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ url_for('static', filename='javascript/js-register.js') }}"></script>
+    </body>
+</html>

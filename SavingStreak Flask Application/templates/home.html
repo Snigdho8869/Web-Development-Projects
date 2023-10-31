@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-home.css') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>SavingStreak</h1>
+        </a>
+
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %} {% if category == 'success' %}
+                <li class="flash-success">{{ message }}</li>
+                {% elif category == 'error' %}
+                <li class="flash-error">{{ message }}</li>
+                {% endif %} {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
+
+
+<div id="menu">
+            <a href="{{ url_for('profile') }}">My Profile</a>
+	    <a href="{{ url_for('statistics') }}">Statistics</a>
+	    <a href="{{ url_for('goals') }}">Goals</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+
+ <div id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+<div class="account-expense">
+
+<div class="accounts">
+      <h3 class="accounts-h3">Accounts</h3>
+      <ul id="accounts-container">
+        <li class="cash"> <p>Cash: ${{ user.cash }}</p> </li>  
+	<li class="bank"> <p>Bank: ${{ user.bank }}</p> </li> 
+	<li class="savings"> <p>Savings: ${{ user.savings }}</p> </li> 
+	<li class="credit_cards"> <p>Credit Cards: ${{ user.credit_cards}}</p> </li>      
+      </ul>
+
+    <ul id="total-add-balance">
+      <li class="total-balance"> <p id="total-balance">Total Balance: ${{ user.cash + user.bank + user.savings + user.credit_cards}}<p> </li> 
+      <button id="add-balance-button">Add Balance</button> 
+      <div id="add-balance-form-container"></div>
+    </ul>
+
+</div>
+
+
+<div class="expense-form">
+  <h2>Add Expense</h2>
+  <form action="/add_expense" method="POST">
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+    <br>
+    <br>
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+      <option value="Rent">Rent</option>
+      <option value="Utilities">Utilities</option>
+      <option value="Food">Food</option>
+      <option value="Transportation">Transportation</option>
+      <option value="Entertainment">Entertainment</option>
+      <option value="Clothing">Clothing</option>
+      <option value="Gifts">Gifts</option>
+      <option value="Travel">Travel</option>
+      <option value="Health care">Health care</option>
+      <option value="Education">Education</option>
+      <option value="Child care">Child care</option>
+      <option value="Others">Others</option>
+    </select>
+    <br>
+    <br>
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" required>
+    <br>
+    <label for="account_type">Account Type:</label>
+    <select id="account_type" name="account_type">
+      <option value="cash">Cash</option>
+      <option value="bank">Bank</option>
+      <option value="savings">Savings</option>
+      <option value="credit_cards">Credit Cards</option>
+    </select>
+    <br>
+    <input type="hidden" id="username" name="username" value={{ user.username }} required>
+    <br>
+<input id="submit-expense" type="submit" value="Add">
+  </form>
+</div>
+
+</div>
+
+
+
+<div class="expense-history-pie">
+
+<div class="expense-history">
+  <h3 style="text-align: center;">Expense History</h3>
+  <p style="margin-left:30px;">Today's total expense: ${{ today_expense }}</p>
+  <p style="margin-left:30px;">Last 7 days' expense: ${{ last_7_days_expense }}</p>
+  <p style="margin-left:30px;">Last 30 days' expense: ${{ last_30_days_expense }}</p>
+  <input type="hidden" id="today-expense" value="{{ today_expense }}">
+  <input type="hidden" id="last-7-days-expense" value="{{ last_7_days_expense }}">
+  <input type="hidden" id="last-30-days-expense" value="{{ last_30_days_expense }}">
+
+<div style="width: 350px; height: 200px; text-align: center; margin-left: 70px;">
+  <canvas id="bar-chart"></canvas>
+</div>
+
+</div>
+
+<div class="pie-chart">
+<h3 class="expense-by-category">Expense By Category</h3>
+  <canvas id="pie-chart"></canvas>
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='javascript/js-bar-chart.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/js-home.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/js-pie-chart.js') }}"></script>
+
+  </body>
+</html>

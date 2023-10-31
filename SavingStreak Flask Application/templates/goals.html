@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Goals</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-goals.css') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+</head>
+<body>
+
+    <a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>SavingStreak</h1>
+        </a>
+
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %} {% if category == 'success' %}
+                <li class="flash-success">{{ message }}</li>
+                {% elif category == 'error' %}
+                <li class="flash-error">{{ message }}</li>
+                {% endif %} {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
+
+
+<div class="add-goals">
+  <p>Add Goals</p>
+  <form method="POST" action="{{ url_for('goals') }}">
+    <label for="goal_name">Goal name:</label>
+    <input type="text" id="goal_name" name="goal_name"><br><br>
+    <label for="need_amount">Amount needed:</label>
+    <input type="number" id="need_amount" name="need_amount" required><br><br>
+    <input type="submit" value="Create Goal">
+  </form>
+</div>
+
+
+{% if goals %}
+  {% for goal in goals %}
+    {% if goal[3] != 'Complete' %}
+      <div class="goal-container">
+  <h3>{{ goal[0] }}</h3>
+  <p>Amount needed: {{ goal[1] }}</p>
+  <p>Savings amount: {{ goal[2] }}</p>
+  <p>Goal status: <span style="color: red;">{{ goal[3] }}</span></p>
+
+  <div class="progress-container">
+    <progress value="{{ goal[2] }}" max="{{ goal[1] }}"></progress>
+  </div>
+  <form method="POST" action="{{ url_for('add_savings', goal_name=goal[0]) }}" style="display: inline-block; margin-top:10px;">
+  <input type="number" id="{{ goal[0] }}_savings" name="savings_amount" style="width: 170px; height: 17px;" required>
+  <input type="submit" value="Add Savings" style="margin: 10px; padding: 8px;">
+</form>
+<form method="POST" action="{{ url_for('remove_goal', goal_name=goal[0]) }}" style="display: inline-block;">
+  <input type="submit" value="Remove Goal" style="padding: 8px; margin-left: 60px;">
+</form>
+
+</div>
+
+    {% endif %}
+  {% endfor %}
+
+  {% for goal in goals %}
+    {% if goal[3] == 'Complete' %}
+      <div class="goal-container-completed">
+        <h3>{{ goal[0] }}</h3>
+        <p>Amount needed: {{ goal[1] }}</p>
+        <p>Savings amount: {{ goal[2] }}</p>
+        <p>Goal status: <span style="color:green;">{{ goal[3] }}</span> </p>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+{% else %}
+  <p>You have not created any goals yet.</p>
+{% endif %}
+
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-login.css') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+
+            <a href="{{ url_for('login') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>SavingStreak</h1>
+        </a>
+
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %} {% if category == 'success' %}
+                <li class="flash-success">{{ message }}</li>
+                {% elif category == 'error' %}
+                <li class="flash-error">{{ message }}</li>
+                {% endif %} {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
+
+            <form method="POST">
+                {{ form.csrf_token }}
+                <p>
+                   <span style="color: white;"> {{ form.username.label }}</span> <br>
+                    {{ form.username(class="form-control", placeholder="Enter your username") }}
+                </p>
+                <p>
+                   <span style="color: white;"> {{ form.password.label }}</span> <br>
+                    {{ form.password(class="form-control", placeholder="Enter your password") }}
+                </p>
+                <p style="color: white;">Forgot your password? <a href="{{ url_for('reset_password') }}">Reset it here</a></p>
+                <p>{{ form.submit(class="btn btn-primary") }}</p>
+            </form>
+            <p style="color: white;">Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+  
+    </body>
+</html>

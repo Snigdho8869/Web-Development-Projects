@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Statistics</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-statistics.css') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.min.js"></script>
+
+
+</head>
+<body>
+<a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>SavingStreak</h1>
+        </a>
+
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %} {% if category == 'success' %}
+                <li class="flash-success">{{ message }}</li>
+                {% elif category == 'error' %}
+                <li class="flash-error">{{ message }}</li>
+                {% endif %} {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
+
+
+<div class= "expense-category">
+
+<div class="expense-history">
+<h3>Expense History</h3>
+  <canvas id="bar-chart"></canvas>
+  <input type="hidden" id="today-expense" value="{{ today_expense }}">
+  <input type="hidden" id="last-7-days-expense" value="{{ last_7_days_expense }}">
+  <input type="hidden" id="last-30-days-expense" value="{{ last_30_days_expense }}">
+</div>
+
+
+<div class="bar-chart-category">
+<h3>Expense By Category</h3>
+<canvas id="bar-chart-category"></canvas>
+</div>
+
+</div>
+
+
+<div class="pie-lifetime">
+
+<div class="pie-chart">
+<h3 style="margin-top: 20px;">Expense By Category</h3>
+  <canvas id="pie-chart"></canvas>
+</div>
+
+<div class="lifetime-balance-spending">
+<canvas id="lifetime_chart"></canvas>
+</div>
+
+</div>
+
+
+<div class="line-chart">
+<h3 style="margin-top: 20px;">Daily Expense Last 30 Days</h3>
+<canvas id="line-chart-daily"></canvas>
+</div>
+
+<div style="display:none;">
+<p><strong>Lifetime Balance: </strong> <span id="lifetime_balance">${{ user.lifetime_balance }}</span></p>
+  <p><strong>Lifetime Spending: </strong> <span id="lifetime_spending">${{ user.lifetime_spending }}</span></p>
+</div>
+
+
+<script>
+var dailyExpenses = {{ daily_expenses|tojson }};
+dailyExpenses.sort(function(a, b) {
+  return new Date(a[0]) - new Date(b[0]);
+});
+Chart.defaults.color = 'white';
+Chart.defaults.font.color = 'white';
+var dates = dailyExpenses.map(expense => new Date(expense[0]));
+var amounts = dailyExpenses.map(expense => expense[1]);
+
+var lineChart = new Chart(document.getElementById('line-chart-daily'), {
+  type: 'line',
+  data: {
+    labels: dates.map(date => date.toLocaleDateString('en-US', { day: 'numeric', month: 'short' })),
+    datasets: [{
+      label: 'Daily Expenses',
+      data: amounts,
+      fill: false,
+      borderColor: 'rgb(75, 192, 192)',
+      tension: 0.1
+    }]
+  },
+
+  options: {
+    scales: {
+      xAxes: [{
+        type: 'time',
+        time: {
+          unit: 'day'
+        },
+        
+      }],
+      
+    },
+    
+  }
+});
+
+</script>
+
+
+<script src="{{ url_for('static', filename='javascript/js-lifetime-balance-spending.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/js-bar-chart.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/js-pie-chart.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/js-bar-chart-category.js') }}"></script>
+
+</body>
+</html>

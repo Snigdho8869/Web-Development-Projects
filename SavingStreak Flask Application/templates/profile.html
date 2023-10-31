@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-profile.css') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-wave"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-animate-rotate@0.2.0/dist/chartjs-plugin-animate-rotate.min.js"></script>
+    </head>
+    <body>
+        <a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>SavingStreak</h1>
+        </a>
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %} {% if category == 'success' %}
+                <li class="flash-success">{{ message }}</li>
+                {% elif category == 'error' %}
+                <li class="flash-error">{{ message }}</li>
+                {% endif %} {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
+
+
+<div id="menu">
+            <button class="btn" id="edit-button">Edit Profile</button>
+            <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+
+ <div id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+        <div style="position: relative;">
+            {% if user.picture %}
+            <img class="profile-pic" id="profile-pic" src="{{ url_for('static', filename='profile_pic/' + user.picture.replace('\\', '/')) }}" alt="Profile Picture" />
+
+            {% else %}
+            <img class="profile-pic" id="profile-pic" src="{{ url_for('static', filename='mics/default.png') }}" alt="Profile Picture" />
+            {% endif %}
+            <img class="upload-icon" id="upload-icon" src="{{ url_for('static', filename='mics/camera.jpg') }}" alt="Upload Picture" />
+        </div>
+        <form id="picture-form" action="{{ url_for('upload_picture') }}" method="post" enctype="multipart/form-data">
+            <input type="file" name="picture" id="picture" style="display: none;" />
+            <div class="preview-container">
+                <img class="preview-image" src="" alt="Preview" />
+                <button id="save-button" class="save-button" type="submit">Save Picture</button>
+            </div>
+        </form>
+        
+
+<div class="text-accounts">
+
+        <div class="text-container" id="text-container">
+            <p><strong>Name:</strong> <span id="name">{{ user.first_name }} {{ user.last_name }}</span></p>
+            <p><strong>Username:</strong> <span id="username">{{ user.username }}</span></p>
+            <p><strong>Email:</strong> <span id="email">{{ user.email }}</span></p>
+            <p><strong>Favorite Number:</strong> <span id="favnum">{{ user.favorite_number }}</span></p>
+            <p><strong>Total Balance:</strong> <span id="totbalance">${{ user.cash + user.bank + user.savings + user.credit_cards }}</span></p>
+        </div>
+
+
+<div class="accounts" id="accounts">
+<p><strong>Cash: </strong> <span id="cash">${{ user.cash }}</span></p>
+<p><strong>Bank: </strong> <span id="bank">${{ user.bank }}</span></p>
+<p><strong>Savings: </strong> <span id="savings">${{ user.savings }}</span></p>
+<p><strong>Credit Cards: </strong> <span id="credit_cards">${{ user.credit_cards }}</span></p>
+<p><strong>Lifetime Balance: </strong> <span id="lifetime_balance">${{ user.lifetime_balance }}</span></p>
+  <p><strong>Lifetime Spending: </strong> <span id="lifetime_spending">${{ user.lifetime_spending }}</span></p>
+</div>
+
+
+<div class="lifetime-balance-spending" id="lifetime-balance-spending">
+<canvas id="lifetime_chart"></canvas>
+</div>
+
+</div>
+
+<div id="edit-options" class="edit-options" style="display: none;">
+            <form action="{{ url_for('edit_profile') }}" method="post" style="width: 300px; margin: 0 auto;">
+                <p><strong>Email:</strong> <input type="text" name="email" value="{{ user.email }}" style="width: 100%; margin-bottom: 10px; height: 25px;" /></p>
+                <p><strong>Favorite Number:</strong> <input type="text" name="favorite_number" value="{{ user.favorite_number }}" minlength="9" maxlength="9" style="width: 100%; margin-bottom: 10px; height: 25px;" /></p>
+                <input type="submit" value="Save Changes" />
+            </form>
+        </div>
+
+
+
+        <script src="{{ url_for('static', filename='javascript/js-profile.js') }}"></script>
+        <script src="{{ url_for('static', filename='javascript/js-lifetime-balance-spending.js') }}"></script>
+    </body>
+</html>
