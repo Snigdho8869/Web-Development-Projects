@@ -1,11 +1,11 @@
 # BrainDive Web Application
-BrainDive is a dynamic and feature-rich web application showcasing my web development skills. It offers a wide range of services, including users authentication system, video management, machine learning-based detections, user profiles, searches, and more. This application was created using Flask, HTML, CSS,  JavaScript, and MySQL.
+BrainDive is a dynamic and feature-rich web application showcasing my web development skills. It offers a wide range of services, including user authentication systems, video management, machine learning-based detections, user profiles, searches, and more. This application was created using Flask, HTML, CSS,  JavaScript, and MySQL.
 
 # Features
 
 1. Authentication System
     * Login: Users can securely log in to their accounts with their credentials.
-    * Register: New users can create an account by providing necessary information.
+    * Register: New users can create an account by providing the necessary information.
     * Forget Password: Users can reset their password if they forget it.
 
 
