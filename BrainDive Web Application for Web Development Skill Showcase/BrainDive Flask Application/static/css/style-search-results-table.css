@@ -1,0 +1,83 @@
+ body {
+     background-color: #F2F2F2;
+     text-align: center;
+     animation: fadein 1s;
+}
+ .logo {
+     position: absolute;
+     top: 0;
+     left: 0;
+     margin-top: 10px;
+     margin-left:10px;
+     width: 40px;
+     height: 40px;
+     border-radius: 20px;
+     animation: logo-spin 2s infinite linear;
+}
+ @keyframes logo-spin {
+     0% {
+         transform: rotate(0deg);
+    }
+     100% {
+         transform: rotate(360deg);
+    }
+}
+ h1{
+     text-align: center;
+     color: #336699;
+     position: absolute;
+     top:0%;
+     margin-top: 10px;
+     margin-left: 50px;
+}
+ h2 {
+     margin-top: 80px;
+     font-size: 36px;
+     color: #6699CC;
+     text-shadow: 2px 2px #c9daf8;
+}
+ table {
+     margin-top: 50px;
+     margin-left: auto;
+     margin-right: auto;
+     border: 2px solid #4169E1;
+     background-color: #fff;
+     animation: slidein 1s ease-out;
+     border: 1px solid black;
+     border-collapse: collapse;
+     border-radius: 30px;
+     overflow: hidden;
+}
+ th {
+     background-color: #6699CC;
+     color: #fff;
+     font-size: 24px;
+     padding: 10px;
+     border: 1px solid black;
+     border-collapse: collapse;
+}
+ td {
+     font-size: 18px;
+     padding: 10px;
+     border: 1px solid black;
+     border-collapse: collapse;
+}
+ tr:nth-child(even) {
+     background-color: #f2f2f2;
+}
+ @keyframes fadein {
+     from {
+         opacity: 0;
+    }
+     to {
+         opacity: 1;
+    }
+}
+ @keyframes slidein {
+     from {
+         transform: translateX(-100px);
+    }
+     to {
+         transform: translateX(0);
+    }
+}

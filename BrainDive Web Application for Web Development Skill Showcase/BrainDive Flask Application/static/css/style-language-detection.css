@@ -1,0 +1,163 @@
+body {
+    background-color: #F2F2F2;
+    font-family: Arial, sans-serif;
+}
+
+a {
+   color: #4CAF50;
+   text-decoration: none;
+   font-weight: bold;
+}
+
+
+a:hover {
+   text-decoration: underline;
+}
+
+h2 {
+    margin: 0;
+    margin-top: 65px;
+    padding: 20px;
+    background-color: #336699;
+    color: white;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+textarea {
+    width: 80%;
+    height: 150px;
+    margin: 20px 0;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #336699;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover{
+     background-color: #2e5c8a;
+}
+
+#prediction {
+    margin: 20px;
+    margin-bottom: 120px;
+    font-size: 24px;
+    text-align: center;
+}
+
+ .logo {
+     position: absolute;
+     top: 0;
+     left: 0;
+     margin-top: 10px;
+     margin-left:10px;
+     width: 40px;
+     height: 40px;
+     border-radius: 20px;
+     animation: logo-spin 2s infinite linear;
+}
+ @keyframes logo-spin {
+     0% {
+         transform: rotate(0deg);
+    }
+     100% {
+         transform: rotate(360deg);
+    }
+}
+
+ h1{
+     text-align: center;
+     color: #336699;
+     position: absolute;
+     top:0%;
+     margin-top: 10px;
+     margin-left: 50px;
+}
+
+
+.category{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+.english, .french, .spanish, .portugeese, .italian,.russian, .sweedish, .malayalam, .dutch,
+.arabic, .turkish, .german, .tamil, .danish, .kannada, .greek, .hindi, .bengali {
+     top: 0%;
+     right: 0%;
+     text-align: center;
+     list-style: none;
+     margin-right: 10px;
+     margin-bottom: 5px;
+     bottom:0%;
+     padding: 12px;
+     border-radius: 20px;
+     background-color: #f8f8f8;
+     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     width: 6%;
+     font-size: 16px;
+     transition: transform 0.3s ease-in-out;
+}
+.english:hover, .french:hover, .spanish:hover, .portugeese:hover, .italian:hover,.russian:hover, .sweedish:hover, .malayalam:hover, .dutch:hover,
+.arabic:hover, .turkish:hover, .german:hover, .tamil:hover, .danish:hover, .kannada:hover, .greek:hover, .hindi:hover, .bengali:hover{
+transform: scale(1.06);
+}
+
+p{
+font-size: 18px;
+margin-top:25px;
+margin-right: 10px;
+margin-left:10px;
+}
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #111;
+    color: #ccc;
+    animation: slideInUp 1s ease-in-out;
+}
+.footer p{
+font-size: 14px;
+margin-top: 10px;
+}
+::-webkit-scrollbar {
+    width: 0px;
+}
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer a {
+    color: #4CAF50;
+}

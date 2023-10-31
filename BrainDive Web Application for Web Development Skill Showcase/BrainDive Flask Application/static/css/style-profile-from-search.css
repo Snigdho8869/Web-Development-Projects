@@ -1,0 +1,116 @@
+body {
+     background-color: #F2F2F2;
+     text-align: center;
+}
+ .profile-pic {
+     position: fixed;
+     width: 150px;
+     height: 150px;
+     border-radius: 75px;
+     object-fit: cover;
+     left: 45%;
+     top : 50px;
+}
+
+ .text-container {
+     position: absolute;
+     top: 52%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     text-align: left;
+     width: 40%;
+     font-family: Arial, sans-serif;
+     font-size: 18px;
+     color: #333;
+     background-color: #eee;
+     padding: 20px;
+     border-radius: 10px;
+     animation: pulse 1s ease-in-out infinite alternate;
+}
+ .text-container p {
+     margin: 10px 0;
+}
+ .logout{
+     text-align: center;
+}
+ @keyframes pulse {
+     from {
+         box-shadow: 0 0 0 0 black;
+    }
+     to {
+         box-shadow: 0 0 0 10px rgba(255, 51, 102, 0);
+    }
+}
+ .logo {
+     position: absolute;
+     top: 0;
+     left: 0;
+     margin-top: 10px;
+     margin-left:10px;
+     width: 40px;
+     height: 40px;
+     border-radius: 20px;
+     animation: logo-spin 2s infinite linear;
+}
+ @keyframes logo-spin {
+     0% {
+         transform: rotate(0deg);
+    }
+     100% {
+         transform: rotate(360deg);
+    }
+}
+ h1{
+     text-align: center;
+     color: #336699;
+     position: absolute;
+     top:0%;
+     margin-top: 10px;
+     margin-left: 50px;
+}
+
+
+.flash-success {
+     list-style: none;
+     border: 1px solid #ccc;
+     border-radius: 10px;
+     background-color: #32de84;
+     color: white;
+     padding: 10px;
+     position: fixed;
+     top: 32%;
+     right: 40%;
+     width: 15%;
+     z-index: 9999;
+     opacity: 0;
+     animation: showFlash 4s ease-in-out forwards;
+}
+ .flash-error{
+     list-style: none;
+     border: 1px solid #ccc;
+     border-radius: 10px;
+     background-color: #ff8080;
+     color: white;
+     padding: 10px;
+     position: fixed;
+     top: 65px;
+     right: 37%;
+     width: 25%;
+     z-index: 9999;
+     opacity: 0;
+     animation: showFlash 4s ease-in-out forwards;
+}
+ @keyframes showFlash {
+     0% {
+         opacity: 0;
+    }
+     10% {
+         opacity: 1;
+    }
+     90% {
+         opacity: 1;
+    }
+     100% {
+         opacity: 0;
+    }
+}

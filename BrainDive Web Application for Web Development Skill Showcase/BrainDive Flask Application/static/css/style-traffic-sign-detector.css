@@ -1,0 +1,124 @@
+
+        body {
+            background-color: #F2F2F2;
+           
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        h2 {
+            margin-top: 70px;
+     padding: 20px;
+     color: white;
+     background-color: #336699;
+     text-align: center;
+     width: 97%;
+        }
+        
+        form {
+            display: inline-block;
+            text-align: left;
+            margin-top: 20px;
+        }
+        
+       
+        input[type=file] {
+            margin-bottom: 20px;
+        }
+        
+        #preview {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 20px;
+	    display: none; 
+	    margin-left: 100px;
+        }
+        
+        #prediction {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+	    margin-left: 100px;
+        }
+
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #336699;
+            color: #fff;
+            font-size: 1.2em;
+            cursor: pointer;
+	    margin-left: 150px;
+            border-radius: 20px;
+        }
+        
+        button:hover {
+            background-color: #2e5c8a;
+        }
+ label {
+    display: inline-block;
+    vertical-align: middle;
+    
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 24px;
+  
+}
+ .logo {
+     position: absolute;
+     top: 0;
+     left: 0;
+     margin-top: 10px;
+     margin-left:10px;
+     width: 40px;
+     height: 40px;
+     border-radius: 20px;
+     animation: logo-spin 2s infinite linear;
+}
+ @keyframes logo-spin {
+     0% {
+         transform: rotate(0deg);
+    }
+     100% {
+         transform: rotate(360deg);
+    }
+}
+ h1{
+     text-align: center;
+     color: #336699;
+     position: absolute;
+     top:0%;
+     margin-top: 10px;
+     margin-left: 50px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #111;
+    color: #ccc;
+    font-size: 14px;
+    animation: slideInUp 1s ease-in-out;
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer a {
+    color: #4CAF50;
+}

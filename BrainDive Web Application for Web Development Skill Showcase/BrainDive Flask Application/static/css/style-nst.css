@@ -1,0 +1,224 @@
+ body {
+     background-color: #F2F2F2;
+     font-family: Arial, Helvetica, sans-serif;
+     margin: 0; 
+}
+ h2 {
+     font-size: 26px;
+     text-align: center;
+     margin-top: 70px;
+    padding-top:10px;
+    padding-bottom: 10px;
+     color: white;
+     background-color: #336699;
+}
+ h3 {
+     font-size: 26px;
+     text-align: center;
+     margin-left: 35%;
+     border-radius: 10px;
+     margin-top: 50px;
+    padding-top:10px;
+    padding-bottom: 10px;
+     color: white;
+     background-color: #2e5c8a;
+    width:30%;
+}
+
+figcaption{
+margin-bottom: 10px;
+}
+ form {
+     margin: 0 auto;
+     width: 50%;
+     border: 1px solid #ccc;
+     padding: 20px;
+     border-radius: 5px;
+     background-color: white;
+}
+ label {
+     display: block;
+     margin-bottom: 10px;
+     font-weight: bold;
+}
+ select, input[type=file] {
+     display: block;
+     margin-bottom: 20px;
+     border: 1px solid #ccc;
+     padding: 5px;
+     border-radius: 5px;
+     width: 100%;
+     font-size: 16px;
+     background-color: #f8f8f8;
+}
+ input[type=submit] {
+     background-color: #336699;
+     color: white;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 5px;
+     font-size: 16px;
+     cursor: pointer;
+}
+ input[type=submit]:hover {
+     background-color: #2e5c8a;
+}
+ img {
+     display: block;
+     margin: 0 auto;
+     max-width: 100%;
+     height: auto;
+     border-radius: 5px;
+}
+ .image-collection {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     margin-left: 10px;
+     margin-right: 10px;
+     margin-bottom: 100px;
+     
+}
+ .image-collection img {
+     width: 200px;
+     height: 200px;
+}
+ .image-collection figure {
+     text-align: center;
+     margin: 0;
+}
+ .image-collection figcaption {
+     margin-top: 5px;
+     font-size: 14px;
+     font-weight: bold;
+}
+ .logo {
+     position: absolute;
+     top: 0;
+     left: 0;
+     margin-top: 10px;
+     margin-left:10px;
+     width: 40px;
+     height: 40px;
+     border-radius: 20px;
+     animation: logo-spin 2s infinite linear;
+}
+ @keyframes logo-spin {
+     0% {
+         transform: rotate(0deg);
+    }
+     100% {
+         transform: rotate(360deg);
+    }
+}
+ h1{
+     text-align: center;
+     color: #336699;
+     position: absolute;
+     top:0%;
+     margin-top: 10px;
+     margin-left: 50px;
+}
+ 
+
+.download-container {
+        display: flex;
+        margin-left: 32%;
+        align-items: center;
+    }
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  padding: 5px 10px;
+  font-size: 16px;
+  width: 100px;
+  color: #333;
+  border: 2px solid #ccc;
+  border-radius: 19px;
+  text-align: center;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked + label {
+  background-color: #002D62;
+  color: #fff;
+}
+
+.download-button {
+  padding: 7px 10px;
+  width: 200px;
+  margin-left: 43%;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #336699;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.download-button:hover {
+  background-color: #2e5c8a;
+}
+
+h4{
+   background-color: #336699;
+text-align: center;
+   color: white;
+width: 300px;
+margin-left: 30%;
+   padding: 7px 120px;
+   border-radius: 10px;
+   font-size: 17px;
+}
+
+
+.nst-result-h2{
+  font-size: 26px;
+  margin-top: 70px;
+  margin-bottom: 20px;
+  color: white;
+padding-top:10px;
+padding-bottom:10px;
+  background-color: #336699;
+     text-align: center;
+     width: 100%;
+}
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #111;
+    color: #ccc;
+    font-size: 14px;
+    animation: slideInUp 1s ease-in-out;
+    
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer a {
+    color: #4CAF50;
+}

@@ -1,0 +1,222 @@
+
+.password-generator{
+     display: flex;
+     flex-wrap: wrap;
+     flex-direction: column;
+     list-style: none;
+     padding: 15px;
+     margin-top: 65px;
+     margin-left: 65px;
+     border-radius: 20px;
+     background-color: #f8f8f8;
+     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     transition: transform 0.3s ease-in-out;
+     width: 90%;
+     font-size: 20px;
+}
+.todo-list{
+     display: flex;
+     flex-wrap: wrap;
+     flex-direction: column;
+     list-style: none;
+     padding: 15px;
+     margin-top: 30px;
+     margin-left: 65px;
+     border-radius: 20px;
+     background-color: #f8f8f8;
+     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     transition: transform 0.3s ease-in-out;
+     width: 90%;
+     font-size: 20px;
+}
+.word-count{
+     display: flex;
+     flex-wrap: wrap;
+     flex-direction: column;
+     list-style: none;
+     padding: 15px;
+     margin-top: 30px;
+     margin-left: 65px;
+     border-radius: 20px;
+     background-color: #f8f8f8;
+     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     transition: transform 0.3s ease-in-out;
+     width: 90%;
+     font-size: 20px;
+}
+.url-shortner{
+     display: flex;
+     flex-wrap: wrap;
+     flex-direction: column;
+     list-style: none;
+     padding: 15px;
+     margin-top: 30px;
+     margin-left: 65px;
+     border-radius: 20px;
+     background-color: #f8f8f8;
+     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     transition: transform 0.3s ease-in-out;
+     width: 90%;
+     font-size: 20px;
+}
+.generate-morse-code{
+     display: flex;
+     flex-wrap: wrap;
+     flex-direction: column;
+     list-style: none;
+     padding: 15px;
+     margin-top: 30px;
+     margin-left: 65px;
+     border-radius: 20px;
+     background-color: #f8f8f8;
+     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     transition: transform 0.3s ease-in-out;
+     width: 90%;
+     font-size: 20px;
+}
+.translate-morse-code{
+     display: flex;
+     flex-wrap: wrap;
+     flex-direction: column;
+     list-style: none;
+     padding: 15px;
+     margin-top: 30px;
+     margin-left: 65px;
+     border-radius: 20px;
+     background-color: #f8f8f8;
+     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     transition: transform 0.3s ease-in-out;
+     width: 90%;
+     font-size: 20px;
+}
+.qr-code{
+     display: flex;
+     flex-wrap: wrap;
+     flex-direction: column;
+     list-style: none;
+     padding: 15px;
+     margin-top: 30px;
+     margin-left: 65px;
+     border-radius: 20px;
+     background-color: #f8f8f8;
+     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     transition: transform 0.3s ease-in-out;
+     width: 90%;
+     font-size: 20px;
+}
+.text-to-speech{
+     display: flex;
+     flex-wrap: wrap;
+     flex-direction: column;
+     list-style: none;
+     padding: 15px;
+     margin-top: 30px;
+     margin-left: 65px;
+     border-radius: 20px;
+     background-color: #f8f8f8;
+     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     transition: transform 0.3s ease-in-out;
+     width: 90%;
+     font-size: 20px;
+}
+.number-conversion{
+     display: flex;
+     flex-wrap: wrap;
+     flex-direction: column;
+     list-style: none;
+     padding: 15px;
+     margin-top: 30px;
+     margin-left: 65px;
+     border-radius: 20px;
+     background-color: #f8f8f8;
+     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     transition: transform 0.3s ease-in-out;
+     width: 90%;
+     font-size: 20px;
+}
+h2{
+text-align: center;
+margin-top:-10px;
+font-size: 26px;
+}
+
+input{
+width: 200px;
+border-radius: 5px;
+}
+
+button{
+border-radius: 5px;
+}
+textarea{
+width: 500px;
+height: 100px;
+resize: none;
+font-size: 18px;
+}
+.count-display {
+display: flex;
+}
+.count-display p {
+margin-bottom: 0;
+margin-right: 10px;
+}
+ h1{
+     text-align: center;
+     color: #336699;
+     position: absolute;
+     top:0%;
+     margin-top: 10px;
+     margin-left: 50px;
+}
+ .logo {
+     position: absolute;
+     top: 0;
+     left: 0;
+     margin-top: 10px;
+     margin-left:10px;
+     width: 40px;
+     height: 40px;
+     border-radius: 20px;
+     animation: logo-spin 2s infinite linear;
+}
+ @keyframes logo-spin {
+     0% {
+         transform: rotate(0deg);
+    }
+     100% {
+         transform: rotate(360deg);
+    }
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #111;
+    color: #ccc;
+    font-size: 14px;
+    animation: slideInUp 1s ease-in-out;
+}
+::-webkit-scrollbar {
+    width: 0px;
+}
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer a {
+    color: #4CAF50;
+}
