@@ -1,1 +1,1 @@
-directory of javascript files
+directory of javascript, css files
