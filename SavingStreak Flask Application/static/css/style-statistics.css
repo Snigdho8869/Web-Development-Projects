@@ -1,0 +1,189 @@
+body {
+     background-color: #303030;
+}
+
+ .logo {
+     position: absolute;
+     top: 0;
+     left: 0;
+     margin-top: 10px;
+     margin-left:10px;
+     width: 40px;
+     height: 40px;
+     border-radius: 20px;
+     animation: logo-spin 2s infinite linear;
+}
+ @keyframes logo-spin {
+     0% {
+         transform: rotate(0deg);
+    }
+     100% {
+         transform: rotate(360deg);
+    }
+}
+ h1{
+     text-align: center;
+     color: #5072A7;
+     position: absolute;
+     top:0%;
+     margin-top: 10px;
+     margin-left: 50px;
+}
+
+
+ a {
+     text-decoration: none;
+     color: #333;
+}
+ @media screen and (max-width: 768px) {
+     li {
+         width: 100%;
+    }
+}
+ 
+.flash-success {
+     list-style: none;
+     border: 1px solid #ccc;
+     border-radius: 10px;
+     background-color: #32de84;
+     color: white;
+     text-alighnment: center;
+     padding: 10px;
+     position: fixed;
+     top: 1%;
+     left: 85%;
+     width: 8%;
+     z-index: 9999;
+     opacity: 0;
+     animation: showFlash 4s ease-in-out forwards;
+}
+ .flash-error{
+     list-style: none;
+     border: 1px solid #ccc;
+     border-radius: 10px;
+     background-color: #ff8080;
+     color: white;
+     padding: 10px;
+     position: fixed;
+     top: 40px;
+     right: 15%;
+     width: 10%;
+     z-index: 9999;
+     opacity: 0;
+     animation: showFlash 4s ease-in-out forwards;
+}
+ @keyframes showFlash {
+     0% {
+         opacity: 0;
+    }
+     10% {
+         opacity: 1;
+    }
+     90% {
+         opacity: 1;
+    }
+     100% {
+         opacity: 0;
+    }
+}
+
+h2{
+background-color: #4B9CD3;
+color: white;
+width:10%;
+margin-top: 5.5%;
+margin-left: 45%;
+border-radius: 5px;
+padding:10px;
+text-align:center;
+}
+
+h3{
+margin-top:0px;
+text-align: center;
+color: white;
+font-size: 22px;
+}
+
+.expense-category{
+margin-top: 70px;
+margin-left: 20px;
+margin-right: 40px;
+display: flex;
+flex:direction: row;
+background-color: #484848;
+border-radius:15px;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.expense-history{
+width: 500px; 
+height: 400px;
+margin-top: 20px;
+margin-left: 60px;
+align-items: center;
+}
+.bar-chart-category{
+width: 600px; 
+height: 400px;
+margin-top: 20px;
+margin-left: 70px;
+align-items: center;
+}
+
+
+
+.pie-lifetime{
+margin-top:50px;
+margin-left: 20px;
+margin-right: 40px;
+display: flex;
+flex-direction: row;
+background-color: #484848;
+border-radius:15px;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.pie-chart{
+margin-left: 5%;
+align-items: center;
+width: 500px; 
+height: 350px;
+}
+#pie-chart{
+position: relative;
+margin-top: -50px;
+margin-left: 70px;
+}
+
+
+.lifetime-balance-spending{
+     margin-left: 16%;
+     text-align: left;
+     width: 30%;
+     height: 310px;
+     font-family: Arial, sans-serif;
+     font-size: 18px;
+     color: #333;
+     padding: 20px;
+     border-radius: 10px;
+     animation: pulse 1s ease-in-out infinite alternate; 
+}
+
+.expense-by-category {
+  margin-top: 15px;
+  margin-left: 130px;
+  margin-bottom: 0;
+  font-size: 26px;
+}
+
+.line-chart{
+width: 1000px; 
+height: 600px;
+margin-top: 70px;
+margin-left: 165px;
+border-radius:15px;
+background-color: #484848;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+padding-top: 1px;
+}
+
