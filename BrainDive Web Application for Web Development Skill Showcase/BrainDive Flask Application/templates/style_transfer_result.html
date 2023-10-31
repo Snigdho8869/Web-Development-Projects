@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stylized Image Result</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style-nst.css') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>BrainDive</h1>
+        </a>
+        <h2 class="nst-result-h2">Stylized Image Result</h2>
+        <img id="styled-image" src="{{ url_for('static', filename='NST/NST_image.jpeg') }}" style= "width: 350px; height: 250px;" alt="Stylized Image">
+        <br />
+    <h4>Image Resolution</h4>
+        <div  class="download-container">
+            <input type="radio" id="size-small" name="image-size" value="small" checked>
+            <label for="size-small">Small</label>
+            <input type="radio" id="size-medium" name="image-size" value="medium">
+            <label for="size-medium">Medium</label>
+            <input type="radio" id="size-large" name="image-size" value="large">
+            <label for="size-large">Large</label>
+            <input type="radio" id="size-original" name="image-size" value="original">
+            <label for="size-original">Original</label>
+        </div>
+<button class="download-button" onclick="downloadImage()">Download Image</button>
+
+    
+        <script>
+            function downloadImage() {
+                var image = document.getElementById("styled-image").src;
+                var sizeSelect = document.querySelector('input[name="image-size"]:checked').value;
+                var link = document.createElement("a");
+                link.href = image;
+                link.download = "stylized-image-" + sizeSelect + ".png";
+                link.addEventListener("click", function() {
+                    link.href = getResizedImage(image, sizeSelect);
+                });
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+
+            function getResizedImage(imageSrc, sizeSelect) {
+                // Calculate desired image width and height based on selected size
+                var img = new Image();
+                img.src = imageSrc;
+                var canvasWidth = img.width;
+                var canvasHeight = img.height;
+                if (sizeSelect == "small") {
+                    canvasWidth = Math.floor(img.width / 2);
+                    canvasHeight = Math.floor(img.height / 2);
+                } else if (sizeSelect == "medium") {
+                    canvasWidth = Math.floor(img.width * 2 / 3);
+                    canvasHeight = Math.floor(img.height * 2 / 3);
+                } else if (sizeSelect == "large") {
+                    canvasWidth = Math.floor(img.width * 3 / 2);
+                    canvasHeight = Math.floor(img.height * 3 / 2);
+                }
+                var canvas = document.createElement("canvas");
+                canvas.width = canvasWidth;
+                canvas.height = canvasHeight;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0, canvasWidth, canvasHeight);
+                return canvas.toDataURL();
+            }
+        </script>
+    </body>
+</html>

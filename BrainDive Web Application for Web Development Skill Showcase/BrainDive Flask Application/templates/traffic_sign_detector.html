@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Sign Detection</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-traffic-sign-detector.css') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+
+<a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>BrainDive</h1>
+        </a>
+    <h2>Traffic Sign Detection</h2>
+    
+    <form action="/traffic_predict" method="post" enctype="multipart/form-data">
+        <label for="image">Select an image:</label>
+        <input type="file" id="image" name="image"><br>
+        <img id="preview" src="#" alt="">
+        <div id="prediction"></div><br>
+        <button type="submit" id="predict-btn">Predict</button>
+    </form>
+
+
+    <div class="footer">
+        <p>All rights reserved &copy; 2023 Md Zahidul Islam</p>
+        <p>Follow me on <a href="https://github.com/Snigdho8869" target="_blank">GitHub</a> and <a href="https://www.facebook.com/Snigdho1853/" target="_blank">Facebook</a></p>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script>
+    const preview = document.querySelector('#preview');
+    const image = document.querySelector('#image');
+    preview.style.display = 'none';
+    image.addEventListener('change', () => {
+        preview.src = '';
+        preview.style.display = 'none';
+        predictionDiv.innerHTML = '';
+        const file = image.files[0];
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+            preview.src = reader.result;
+            preview.style.display = 'block';
+        });
+        reader.readAsDataURL(file);
+    });
+
+    const form = document.querySelector('form');
+    const predictBtn = document.querySelector('#predict-btn');
+    const predictionDiv = document.querySelector('#prediction');
+    predictBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        predictionDiv.textContent = '';
+        fetch('/traffic_predict', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            const prediction = data.signature;
+            const predictionMsg = `Prediction: ${prediction}`;
+            const predictionText = document.createTextNode(predictionMsg);
+            predictionDiv.appendChild(predictionText);
+            const animation = anime({
+                targets: predictionDiv,
+                translateY: ["-100%", 0],
+                opacity: [0, 1],
+                scale: [0.5, 1],
+                duration: 1000,
+                easing: "spring(1, 80, 10, 0)",
+                delay: 500,
+            });
+        })
+        .catch(error => console.error(error));
+    });
+</script>
+
+</body>
+</html>

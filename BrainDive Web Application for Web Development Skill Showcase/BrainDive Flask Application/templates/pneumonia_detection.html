@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+    <title>Pneumonia Detection</title>
+    <style>
+ body {
+            background-color: #F2F2F2;
+           
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        h2 {
+            margin-top: 70px;
+     padding: 20px;
+     color: white;
+     background-color: #336699;
+     text-align: center;
+     width: 97%;
+        }
+        
+        form {
+            display: inline-block;
+            text-align: left;
+            margin-top: 20px;
+        }
+        
+       
+        input[type=file] {
+            margin-bottom: 20px;
+        }
+        
+        #preview {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 20px;
+	    display: none; 
+	    margin-left: 100px;
+        }
+        
+        #prediction {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+	    margin-left: 100px;
+        }
+
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #336699;
+            color: #fff;
+            font-size: 1.2em;
+            cursor: pointer;
+	    margin-left: 150px;
+            border-radius: 20px;
+        }
+        
+        button:hover {
+            background-color: #2e5c8a;
+        }
+ label {
+    display: inline-block;
+    vertical-align: middle;
+    
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 24px;
+  
+}
+ .logo {
+     position: absolute;
+     top: 0;
+     left: 0;
+     margin-top: 10px;
+     margin-left:10px;
+     width: 40px;
+     height: 40px;
+     border-radius: 20px;
+     animation: logo-spin 2s infinite linear;
+}
+ @keyframes logo-spin {
+     0% {
+         transform: rotate(0deg);
+    }
+     100% {
+         transform: rotate(360deg);
+    }
+}
+ h1{
+     text-align: center;
+     color: #336699;
+     position: absolute;
+     top:0%;
+     margin-top: 10px;
+     margin-left: 50px;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #111;
+    color: #ccc;
+    font-size: 14px;
+    animation: slideInUp 1s ease-in-out;
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer a {
+    color: #4CAF50;
+}
+
+    </style>
+</head>
+<body>
+
+ <a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>BrainDive</h1>
+        </a>
+    <h2>Pneumonia Detection</h2>
+
+<form action="/pneumonia_predict" method="post" enctype="multipart/form-data">
+    <label for="image">Select an image:</label>
+    <input type="file" id="image" name="image"><br>
+    <img id="preview" src="#" alt="">
+    <div id="prediction"></div><br>
+    <button type="submit" id="predict-btn">Predict</button>
+</form>
+
+
+    <div class="footer">
+        <p>All rights reserved &copy; 2023 Md Zahidul Islam</p>
+        <p>Follow me on <a href="https://github.com/Snigdho8869" target="_blank">GitHub</a> and <a href="https://www.facebook.com/Snigdho1853/" target="_blank">Facebook</a></p>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script>
+    const preview = document.querySelector('#preview');
+    const image = document.querySelector('#image');
+    preview.style.display = 'none';
+    image.addEventListener('change', () => {
+        preview.src = '';
+        preview.style.display = 'none';
+        predictionDiv.innerHTML = '';
+        const file = image.files[0];
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+            preview.src = reader.result;
+            preview.style.display = 'block';
+        });
+        reader.readAsDataURL(file);
+    });
+
+    const form = document.querySelector('form');
+    const predictBtn = document.querySelector('#predict-btn');
+    const predictionDiv = document.querySelector('#prediction');
+    predictBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        predictionDiv.textContent = '';
+        fetch('/pneumonia_predict', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            const prediction = data.prediction;
+            const image_url = data.image_url;
+            const predictionMsg = `Prediction: ${prediction}`;
+            const predictionText = document.createTextNode(predictionMsg);
+            predictionDiv.appendChild(predictionText);
+            preview.src = image_url;
+            const animation = anime({
+                targets: predictionDiv,
+                translateY: ["-100%", 0],
+                opacity: [0, 1],
+                scale: [0.5, 1],
+                duration: 1000,
+                easing: "spring(1, 80, 10, 0)",
+                delay: 500,
+            });
+        })
+        .catch(error => console.error(error));
+    });
+</script>
+
+</body>
+</html>

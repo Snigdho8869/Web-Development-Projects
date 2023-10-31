@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blood Group Search Results</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-search-results-table.css')}}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>BrainDive</h1>
+        </a>
+
+        <h2>Blood Group Search Results:</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Blood Group</th>
+                <th>Gender</th>
+		<th>Address</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user[1] }} {{ user[2] }}</td>
+                <td>{{ user[4] }}</td>
+                <td>{{ user[5] }}</td>
+                <td>{{ user[6] }}</td>
+                <td>{{ user[10] }}</td>
+		<td>{{ user[11] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

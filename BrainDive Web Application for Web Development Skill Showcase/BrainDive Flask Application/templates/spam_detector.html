@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Spam Message Detector</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-spam-message-detector.css') }}" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='javascript/js-spam-mesage-detector.js') }}"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body class="index-body">
+
+        <a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>BrainDive</h1>
+        </a>
+
+        <h2 class="index-h1">Spam Message Detector</h2>
+
+        <form class="index-form">
+            <textarea id="text" placeholder="Enter text here..."></textarea>
+            <button type="button" onclick="predict()">Predict</button>
+        </form>
+
+        <div id="prediction">
+        </div>
+
+
+    <div class="footer">
+        <p>All rights reserved &copy; 2023 Md Zahidul Islam</p>
+        <p>Follow me on <a href="https://github.com/Snigdho8869" target="_blank">GitHub</a> and <a href="https://www.facebook.com/Snigdho1853/" target="_blank">Facebook</a></p>
+    </div>
+    </body>
+</html>

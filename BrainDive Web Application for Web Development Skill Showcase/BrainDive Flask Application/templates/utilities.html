@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Utilities</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-utilities.css') }}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+        <a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>BrainDive</h1>
+   	</a>
+    <div class="password-generator" id="password-generator">
+      <h2>Password Generator</h2>
+      <form action="/generate_password" method="POST">
+        <label for="length">Password Length:</label>
+        <input type="number" name="length" id="length" min="1" required>
+        <button type="submit" onclick="scrollToSection('password-generator')">Generate</button>
+      </form>
+      {% if password %}
+      <p>Your random password is: {{ password }}</p>
+      {% endif %}
+    </div>
+
+    <div class="todo-list" id="todo-list">
+      <h2>To Do List</h2>
+      <form action="/add_task" method="POST">
+        <label for="task">Add Task:</label>
+        <input type="text" name="task" id="task" required>
+        <button type="submit" style="margin-bottom: 10px;" onclick="scrollToSection('todo-list')">Add</button>
+      </form>
+      <form action="/remove_task" method="POST" autocomplete="off">
+        <label for="task_num">Remove Task:</label>
+        <select name="task_num" id="task_num">
+          {% for i in range(tasks|length) %}
+          <option value="{{ i+1 }}">{{ tasks[i] }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit" onclick="scrollToSection('todo-list')">Remove</button>
+      </form>
+      {% if error %}
+      <p>Error: {{ error }}</p>
+      {% endif %}
+      {% if message %}
+      <p style="margin-bottom: 0px;">{{ message }}</p>
+      {% endif %}
+
+      <h4 style="margin-bottom: 0px;">Current Tasks:</h4>
+      {% if tasks %}
+      <ul>
+        {% for i in range(tasks|length) %}
+        <li>{{ tasks[i] }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p style="margin-bottom: 0px;">No tasks.</p>
+      {% endif %}
+    </div>
+
+    <div class="word-count">
+      <h2>Word Count</h2>
+      <form>
+        <p for="text" style="margin-top: 0px;">Enter Text:</p>
+        <textarea name="text" id="text" rows="4" required></textarea>
+      </form>
+      <div class="count-display">
+        <p id="word-count-display"></p>
+        <p id="char-count-display"></p>
+      </div>
+    </div>
+
+    <div class="url-shortner" id="url-shortner">
+      <h2>URL Shortener</h2>
+      <form action="/shorten_url" method="POST">
+        <label for="url">Enter URL to Shorten:</label>
+        <input type="text" name="url" id="url" required>
+        <button type="submit" onclick="scrollToSection('url-shortner')">Shorten</button>
+      </form>
+      {% if short_url %}
+      <p>Shortened URL: <a href="{{ short_url }}" target="_blank">{{ short_url }}</a></p>
+      {% endif %}
+    </div>
+
+    <div class="generate-morse-code" id="generate-morse-code">
+      <h2>Generate Morse Code</h2>
+      <form action="/generate_morse_code" method="POST">
+        <label for="text">Enter Text:</label>
+        <input type="text" name="text" id="text" required>
+        <button type="submit" onclick="scrollToSection('generate-morse-code')">Generate</button>
+      </form>
+      {% if morse_code %}
+      <p style="margin-bottom: 0px;">Morse Code: {{ morse_code }}</p>
+      {% endif %}
+    </div>
+
+    <div class="translate-morse-code" id="translate-morse-code">
+      <h2>Translate Morse Code</h2>
+      <form action="/translate_morse_code" method="POST">
+        <label for="morse_code">Enter Morse Code:</label>
+        <input type="text" name="morse_code" id="morse_code" required>
+        <button type="submit" onclick="scrollToSection('translate-morse-code')">Translate</button>
+      </form>
+      {% if translated_text %}
+      <p style="margin-bottom: 0px;">Translated Text: {{ translated_text }}</p>
+      {% endif %}
+    </div>
+
+    <div class="qr-code" id="qr-code">
+      <h2>Generate QR Code</h2>
+      <form action="/generate_qr_code" method="POST">
+        <label for="data">Enter Data:</label>
+        <input type="text" name="data" id="data" required>
+        <button type="submit" style="margin-bottom: 10px;" onclick="scrollToSection('qr-code')">Generate</button>
+      </form>
+      {% if qr_code %}
+      <img src="{{ qr_code }}" alt="QR Code" style="width: 200px; height: 200px;">
+      <br>
+      <a href="{{ qr_code }}" download="qrcode.png" style="margin-top: -10px; text-decoration: none; color: black; width: 100px; border: 2px solid black; border-radius: 5px; text-align: center; font-size: 16px;">Save Image</a>
+      {% endif %}
+    </div>
+
+    <div class="text-to-speech" id="text-to-speech">
+      <h2>Text-to-Speech Converter</h2>
+      <form action="/text_to_audio_convert" method="POST">
+        <label for="text">Enter Text:</label>
+        <input type="text" name="text" id="text" required>
+        <button type="submit" onclick="scrollToSection('text-to-speech')">Convert</button>
+      </form>
+      {% if audio_file %}
+      <audio controls>
+        <source src="{{ audio_file }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      {% endif %}
+    </div>
+
+    <div class="number-conversion" id="number-conversion">
+      <h2>Number Conversion</h2>
+      <form action="/number_conversion" method="POST">
+        <label for="choice">Number conversion option:</label>
+        <select id="choice" name="choice" style="margin-bottom: 10px; height: 20px; border-radius: 3px;">
+          <option value="0">Select an option</option>
+          <option value="1">Decimal to Binary</option>
+          <option value="2">Decimal to Octal</option>
+          <option value="3">Decimal to Hexadecimal</option>
+          <option value="4">Binary to Decimal</option>
+          <option value="5">Binary to Octal</option>
+          <option value="6">Binary to Hexadecimal</option>
+          <option value="7">Octal to Decimal</option>
+          <option value="8">Octal to Binary</option>
+          <option value="9">Octal to Hexadecimal</option>
+          <option value="10">Hexadecimal to Decimal</option>
+          <option value="11">Hexadecimal to Binary</option>
+          <option value="12">Hexadecimal to Octal</option>
+        </select>
+        <br>
+
+        <div id="decimal-input" style="margin-bottom: -10px;">
+          <label for="decimal">Decimal number:</label>
+          <input type="text" id="decimal" name="decimal">
+        </div>
+
+        <div id="binary-input" style="margin-bottom: -10px;">
+          <label for="binary">Binary number:</label>
+          <input type="text" id="binary" name="binary">
+        </div>
+
+        <div id="octal-input" style="margin-bottom: -10px;">
+          <label for="octal">Octal number:</label>
+          <input type="text" id="octal" name="octal">
+        </div>
+
+        <div id="hexadecimal-input" style="margin-bottom: -10px;">
+          <label for="hexadecimal">Hexadecimal number:</label>
+          <input type="text" id="hexadecimal" name="hexadecimal">
+        </div>
+
+        <br>
+        <input type="submit" value="Convert" style="width: 70px;" onclick="scrollToSection('number-conversion')">
+      </form>
+
+      {% if result %}
+      <h4 style="margin-bottom: 0px;">Result: {{ result }}</h4>
+      {% endif %}
+    </div>
+
+
+    <div class="footer">
+        <p>All rights reserved &copy; 2023 Md Zahidul Islam</p>
+        <p>Follow me on <a href="https://github.com/Snigdho8869" target="_blank">GitHub</a> and <a href="https://www.facebook.com/Snigdho1853/" target="_blank">Facebook</a></p>
+    </div>
+
+    <script src="{{ url_for('static', filename='javascript/js-utilities.js') }}"></script>
+  </body>
+</html>

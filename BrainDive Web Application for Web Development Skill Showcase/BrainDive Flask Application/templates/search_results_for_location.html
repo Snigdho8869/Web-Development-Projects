@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-search-results.css') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+<body>
+<a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>BrainDive</h1>
+        </a>
+
+{% if users %}
+    <ul id="search_results">
+        <h2>Search Results for {{ users[0][6] }} Blood Group</h2>
+        <a href="{{ url_for('search_results_tables', blood_group=users[0][6]) }}" class="table-view-btn">Table View</a>
+
+        {% for user in users %}
+        <div class="search-results">
+            <li>
+                {% if user[9] %}
+                <a href="{{ url_for('profile_custom', username=user[3]) }}">
+                    <img class="profile-pic-small" src="{{ url_for('static', filename='profile_pic/' + user[9]) }}" alt="Profile Picture" />
+                </a>
+                {% else %}
+                <a href="{{ url_for('profile_custom', username=user[3]) }}">
+                    <img class="profile-pic-small" src="{{ url_for('static', filename='mics/default.png') }}" alt="Profile Picture" />
+                </a>
+                {% endif %}
+
+                <div class="user-info">
+                    <a href="{{ url_for('profile_custom', username=user[3]) }}">
+                        <span class="name">{{ user[1] }} {{ user[2] }}</span>
+                    </a>
+                </div>
+            </li>
+        </div>
+        {% endfor %}
+    </ul>
+  {% else %}
+
+        <h2 class="no">No Results Found</h2>
+        <p class="sorry">We're sorry, but no results were found for your search query.</p>
+{% endif %}
+</body>
+</html>

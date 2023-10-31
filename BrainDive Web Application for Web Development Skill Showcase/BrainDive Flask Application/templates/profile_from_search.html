@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-profile-from-search.css') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>BrainDive</h1>
+        </a>
+        <div style="position: relative;">
+            {% if user[9] %}
+            <img class="profile-pic" src="{{ url_for('static', filename='profile_pic/' + user[9]) }}" alt="Profile Picture" />
+            {% else %}
+            <img class="profile-pic" src="{{ url_for('static', filename='mics/default.png') }}" alt="Profile Picture" />
+            {% endif %}
+        </div>
+
+        <div class="text-container">
+            <p><strong>Name:</strong> {{ user[1] }} {{ user[2] }}</p>
+            <p><strong>Email:</strong> {{ user[4] }}</p>
+            <p><strong>Phone Number:</strong> {{ user[5] }}</p>
+            <p><strong>Blood Group:</strong> {{ user[6] }}</p>
+            <p><strong>Gender:</strong> {{ user[10] }}</p>
+	    <p><strong>Address:</strong> {{ user[11] }}</p>
+        </div>
+        <script src="{{ url_for('static', filename='javascript/js-profile.js') }}"></script>
+    </body>
+</html>

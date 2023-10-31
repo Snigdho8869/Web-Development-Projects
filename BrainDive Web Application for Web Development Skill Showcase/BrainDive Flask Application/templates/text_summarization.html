@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Text Summarizer</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-text-summarization.css') }}">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='javascript/js-text-summarization.js') }}"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+<a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>BrainDive</h1>
+        </a>
+        <h2>Text Summarizer</h2>
+<div class="count" id="text-count"></div>
+        <form>
+            <textarea id="text" placeholder="Enter text here" oninput="updateCount()"></textarea>
+            <button type="button" onclick="summarizer()">Summarize</button>
+        </form>
+<h3>Summerized Text:</h3>
+        <div class="summarize-count" id="summarize-count"></div>
+         <div class="summarize-container" id="summarize-container"  oninput="updateCount()">
+            <div id="summarize_text"></div>
+        </div>
+
+
+    <div class="footer">
+        <p>All rights reserved &copy; 2023 Md Zahidul Islam</p>
+        <p>Follow me on <a href="https://github.com/Snigdho8869" target="_blank">GitHub</a> and <a href="https://www.facebook.com/Snigdho1853/" target="_blank">Facebook</a></p>
+    </div>
+
+    </body>	
+</html>

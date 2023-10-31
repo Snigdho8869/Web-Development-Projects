@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-profile.css') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>BrainDive</h1>
+        </a>
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %} {% if category == 'success' %}
+                <li class="flash-success">{{ message }}</li>
+                {% elif category == 'error' %}
+                <li class="flash-error">{{ message }}</li>
+                {% endif %} {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
+
+        <div style="position: relative;">
+            {% if user.picture %}
+            <img class="profile-pic" id="profile-pic" src="{{ url_for('static', filename='profile_pic/' + user.picture) }}" alt="Profile Picture" />
+            {% else %}
+            <img class="profile-pic" id="profile-pic" src="{{ url_for('static', filename='mics/default.png') }}" alt="Profile Picture" />
+            {% endif %}
+            <img class="upload-icon" id="upload-icon" src="{{ url_for('static', filename='mics/camera.jpg') }}" alt="Upload Picture" />
+        </div>
+        <form id="picture-form" action="{{ url_for('upload_picture') }}" method="post" enctype="multipart/form-data">
+            <input type="file" name="picture" id="picture" style="display: none;" />
+            <div class="preview-container">
+                <img class="preview-image" src="" alt="Preview" />
+                <button id="save-button" class="save-button" type="submit">Save Picture</button>
+            </div>
+        </form>
+        <div id="menu">
+            <button class="btn" id="edit-button">Edit Profile</button>
+            <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+        <div id="edit-options" class="edit-options" style="display: none;">
+            <form action="{{ url_for('edit_profile') }}" method="post" style="width: 300px; margin: 0 auto;">
+                <p><strong>Email:</strong> <input type="text" name="email" value="{{ user.email }}" style="width: 100%; margin-bottom: 10px; height: 25px;" /></p>
+                <p><strong>Phone Number:</strong> <input type="text" name="phone_number" value="{{ user.phone_number }}" style="width: 100%; margin-bottom: 10px; height: 25px;" /></p>
+                <p><strong>Favorite Number:</strong> <input type="text" name="favorite_number" value="{{ user.favorite_number }}" minlength="9" maxlength="9" style="width: 100%; margin-bottom: 10px; height: 25px;" /></p>
+		<p><strong>Address:</strong> <input type="text" name="address" value="{{ user.address }}" style="width: 100%; margin-bottom: 10px; height: 25px;" /></p>
+                <input type="submit" value="Save Changes" />
+            </form>
+        </div>
+
+        <div id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="text-container" id="text-container">
+            <p><strong>Name:</strong> <span id="name">{{ user.first_name }} {{ user.last_name }}</span></p>
+            <p><strong>Username:</strong> <span id="username">{{ user.username }}</span></p>
+            <p><strong>Email:</strong> <span id="email">{{ user.email }}</span></p>
+            <p><strong>Phone Number:</strong> <span id="phone">{{ user.phone_number }}</span></p>
+            <p><strong>Blood Group:</strong> <span id="blood">{{ user.blood_group }}</span></p>
+            <p><strong>Favorite Number:</strong> <span id="favnum">{{ user.favorite_number }}</span></p>
+            <p><strong>Gender:</strong> <span id="gender">{{ user.gender }}</span></p>
+	    <p><strong>Address:</strong> <span id="address">{{ user.address }}</span></p>
+	    <p><strong>Date of birth:</strong> <span id="date_of_birth">{{ user.date_of_birth }}</span></p>
+        </div>
+        <script src="{{ url_for('static', filename='javascript/js-profile.js') }}"></script>
+    </body>
+</html>

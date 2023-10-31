@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Funs</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-funs.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-brick.css') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="{{ url_for('static', filename='javascript/js-brick.js') }}"></script>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+        <a href="{{ url_for('home') }}">
+            <img class="logo" src="{{ url_for('static', filename='mics/logo.png') }}" alt="Logo" />
+            <h1>BrainDive</h1>
+   	</a>
+
+    <div class="brick_breaker">
+        <h2>Brick Breaker</h2>
+        <canvas id="gameCanvas" width="800" height="570"></canvas>
+        <div style="text-align: center; margin-top: 10px;">
+            <div id="leftButton" class="arrow-button">&larr;</div>
+            <div id="rightButton" class="arrow-button">&rarr;</div>
+        </div>
+    </div>
+
+    <div class="guess">
+        <h2>Guess the Number</h2>
+        <form id="guessForm" action="{{ url_for('guess_number') }}" method="POST">
+            <p style="margin-top:0px; text-align: center; ">Guess a number between 1 and 100:</p>
+            <input type="number" name="guess" required style="height: 20px; width: 200px; border-radius: 5px; margin-left: 450px;">
+            <input type="submit" value="Submit" style="padding: 4px; border-radius: 5px; margin-left: 10px;">
+        </form>
+        {% if message_of_guess %}
+            <p style="margin-left: 450px;">{{ message_of_guess }}</p>
+        {% endif %}
+    </div>
+
+    <div class="rps">
+        <h2>Rock Paper Scissors</h2>
+        <form id="rpsForm" action="{{ url_for('rock_paper_scissors') }}" method="POST">
+            <p style="margin-top:0px; text-align: center;">Choose rock, paper, or scissors:</p>
+            <input type="radio" id="rock" name="choice" value="rock" required style="margin-left: 470px;">
+            <label for="rock">Rock</label><br>
+            <input type="radio" id="paper" name="choice" value="paper" style="margin-left: 470px;">
+            <label for="paper">Paper</label><br>
+            <input type="radio" id="scissors" name="choice" value="scissors" style="margin-left: 470px;">
+            <label for="scissors">Scissors</label><br>
+            <input type="submit" value="Submit" style="padding: 4px; border-radius: 5px; margin-top: 10px; margin-left: 470px;">
+        </form>
+        {% if message_of_rps %}
+            <p style="margin-bottom: 0px; margin-left: 470px;">{{ message_of_rps }}</p>
+        {% endif %}
+    </div>
+
+    <div class="tictac">
+        <h2>Tic Tac Toe</h2>
+        <div class="board">
+            <div class="cell" onclick="makeMove(0)"></div>
+            <div class="cell" onclick="makeMove(1)"></div>
+            <div class="cell" onclick="makeMove(2)"></div>
+            <br>
+            <div class="cell" onclick="makeMove(3)"></div>
+            <div class="cell" onclick="makeMove(4)"></div>
+            <div class="cell" onclick="makeMove(5)"></div>
+            <br>
+            <div class="cell" onclick="makeMove(6)"></div>
+            <div class="cell" onclick="makeMove(7)"></div>
+            <div class="cell" onclick="makeMove(8)"></div>
+        </div>
+        <div id="status" style="margin-top: 15px; margin-left: 450px;"></div>
+        <button onclick="startNewGame()" style="padding: 4px; border-radius: 5px; margin-top: 10px; margin-left: 450px; width: 120px;">Start New Game</button>
+
+    </div>
+
+    <div class="palindrome">
+        <h2>Palindrome Check</h2>
+        <form id="palindromeForm" action="/palindrome_check" method="POST">
+            <label for="input_str" style="margin-left: 450px;">Enter a string:</label>
+            <input type="text" id="input_str" name="input_str" required style="height: 20px; width: 200px; border-radius: 5px;">
+            <br>
+            <input type="submit" value="Check" style="padding: 4px; border-radius: 5px; margin-top: 10px; margin-left: 450px;">
+        </form>
+        {% if message_of_palindrome is defined %}
+            {% if message_of_palindrome %}
+                <p style="margin-bottom: 0px; margin-left: 450px;">{{ input_str }} is a palindrome!</p>
+            {% else %}
+                <p style="margin-bottom: 0px; margin-left: 450px;">{{ input_str }} is not a palindrome.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div class="fibo">
+        <h2>Fibonacci Sequence Generator</h2>
+        <form id="fibonacciForm" action="/fibonacci" method="POST">
+            <label for="n_terms" style="margin-left: 400px;">Enter the number of terms:</label>
+            <input type="number" id="n_terms" name="n_terms" min="1" required style="height: 20px; width: 200px; border-radius: 5px;">
+            <br>
+            <input type="submit" value="Generate" style="padding: 4px; border-radius: 5px; margin-top: 10px; margin-left: 400px;">
+        </form>
+        {% if sequence %}
+            <p style="margin-left: 400px;">{{ sequence[0] }}</p>
+            <p class="sequence" style="margin-left: 400px;">
+                {% for term in sequence[1:] %}
+                    {{ term }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
+    </div>
+
+
+    <div class="footer">
+        <p>All rights reserved &copy; 2023 Md Zahidul Islam</p>
+        <p>Follow me on <a href="https://github.com/Snigdho8869" target="_blank">GitHub</a> and <a href="https://www.facebook.com/Snigdho1853/" target="_blank">Facebook</a></p>
+    </div>
+
+    <script src="{{ url_for('static', filename='javascript/js-funs.js') }}"></script>
+
+    
+</body>
+</html>
