@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Typing Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="static/css/typing_test.css">
+</head>
+<body>
+    <header>
+        <h1>TypeSprint</h1>
+    </header>
+
+    <section id="typing-section">
+        <h3>Paragraph</h3>
+        <div id="paragraph-container">
+            <p id="paragraph">{{ paragraph }}</p>
+        </div>
+
+        <div id="realtime_update">
+            <h4>Timer: <span id="timer">{{ timer }}</span> seconds</h4>
+            <h4>Words per Minute: <span id="wpm">0</span></h4>
+            <h4>Accuracy: <span id="accuracy">0</span>%</h4>
+            <h4>Time Elapsed: <span id="elapsed">0</span> seconds</h4>
+        </div>
+
+        <form id="typingForm" method="POST" action="/result">
+            <textarea id="userInput" name="user_input" rows="5" cols="50" {% if timer == 0 %}disabled{% endif %}></textarea>
+            <br>
+	  <div id="submit-change">
+            <input type="submit" value="Submit" {% if timer == 0 %}disabled{% endif %}>
+	    <button id="changeParagraphButton">Change Paragraph</button>
+	  </div>
+        </form>
+
+        <div id="results"></div> 
+    </section>
+
+    <script src="static/javascript/typing_test.js"></script> 
+</body>
+</html>
