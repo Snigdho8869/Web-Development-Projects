@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brick Breaker</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style-brick.css') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="{{ url_for('static', filename='js-brick.js') }}"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h1>Brick Breaker</h1>
+    <canvas id="gameCanvas" width="800" height="570"></canvas>
+    <div style="text-align: center; margin-top: 10px;">
+        <div id="leftButton" class="arrow-button">&larr;</div>
+        <div id="rightButton" class="arrow-button">&rarr;</div>
+    </div>
+</body>
+</html>
