@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-register.css') }}" />
+</head>
+
+<body>
+    <div class="text-center">
+        <a href="{{ url_for('login') }}">
+            <img class="logo" src="{{ url_for('static', filename='logo/logo.jpg') }}" alt="Logo" />
+            <h1>ZisCricCounter</h1>
+        </a>
+
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %} {% if category == 'success' %}
+            <li class="flash-success">{{ message }}</li>
+            {% elif category == 'error' %}
+            <li class="flash-error">{{ message }}</li>
+            {% endif %} {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
+
+        <form method="POST" onsubmit="return validateForm();">
+            {{ form.csrf_token }}
+
+            <div class="form-group">
+                <label for="register-name"> {{ form.name.label }}</label>
+                {{ form.name(class="form-control", id="register-name", placeholder="Enter your name") }}
+            </div>
+
+            <div class="form-group">
+                <label for="register-user-name"> {{ form.user_name.label }}</label>
+                <input type="text" class="form-control" id="register-user-name" placeholder="Enter your username"
+                    name="{{ form.user_name.name }}" value="{{ form.user_name.value }}" id="username-input">
+                <span id="username-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="register-email">{{ form.email.label }}</label>
+                {{ form.email(class="form-control", id="register-email", placeholder="Enter your email") }}
+            </div>
+
+            <div class="form-group">
+                <label for="register-favorite-number">{{ form.favorite_number.label }}</label>
+                {{ form.favorite_number(class="form-control", id="register-favorite-number",
+                placeholder="Enter your favorite number", maxlength="9",
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);") }}
+            </div>
+
+            <div class="form-group">
+                <label style="display: block; margin-left: 10px; margin-bottom:0px;" for="register-password">{{ form.password.label }}</label>
+                {{ form.password(class="form-control", id="register-password", placeholder="Enter your password") }}
+            </div>
+
+            <div class="form-group">
+                <label style="display: block; margin-left: 10px; margin-bottom:0px;" for="register-confirm-password">{{ form.confirm_password.label }}</label>
+                {{ form.confirm_password(class="form-control", id="register-confirm-password",
+                placeholder="Enter your password again") }}
+            </div>
+
+            <div class="submit">
+                {{ form.submit }}
+            </div>
+        </form>
+
+        <p>Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+    </div>
+
+    <footer id="footer" class="footer">
+        <p>&copy; 2023 ZisCricCounter. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/js-register.js') }}"></script>
+</body>
+
+</html>
