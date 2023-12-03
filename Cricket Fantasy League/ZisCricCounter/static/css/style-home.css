@@ -1,0 +1,798 @@
+body {
+     background-color: #F2F2F2;
+}
+
+ #leaderboard-section {
+     margin-top: 30px;
+}
+
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-top: 15px;
+}
+
+ th, td {
+     border: 1px solid #ddd;
+     padding: 8px;
+     text-align: left;
+}
+
+ th {
+     background-color: #336699;
+     color: white;
+}
+
+ #top-players-section {
+     margin-top: 30px;
+}
+
+
+ @media only screen and (min-width: 600px) {
+    /* Styles for screens wider than 600px (computers) */
+     .footer {
+         width: 100%;
+         text-align: center;
+         color: #336699;
+         font-size: 18px;
+    }
+     .player-section-h2{
+         text-align: left;
+         color: black;
+         margin-top: 100px;
+         margin-left: 10px;
+    }
+     .add-player-btn {
+         margin-left: 30px;
+         color: #fff;
+         border-radius: 10px;
+         border: none;
+         padding: 10px;
+         text-align: center;
+         text-decoration: none;
+         display: block;
+         background-color: #336699;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         font-size: 12px;
+         font-weight: bold;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .add-player-btn:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .team-section-h2{
+         text-align: left;
+         color: black;
+         margin-top: 20px;
+         margin-left: 10px;
+    }
+     .team-section-h3{
+         margin-left: 30px;
+         margin-bottom:5px;
+         font-size: 20px;
+    }
+     .player-number-h3{
+         text-align: left;
+         color: black;
+         margin-top: 10px;
+         margin-left: 30px;
+    }
+     .player-name-input{
+         text-align: left;
+         color: black;
+         margin-left: 30px;
+         margin-right: 10px;
+         padding: 5px;
+    }
+     .payer-role-dropdown-menu{
+         text-align: center;
+         color: black;
+         margin-right: 10px;
+         padding: 5px;
+    }
+     .add-inning{
+         text-align: center;
+         color: black;
+         margin-right: 10px;
+         padding: 6px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .add-inning:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .toggle-button{
+         text-align: center;
+         color: black;
+         margin-right: 10px;
+         padding: 6px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .toggle-button:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .calculate-all-players-total-points-button{
+         text-align: center;
+         color: black;
+         margin-left: 30px;
+         margin-right: 10px;
+         padding: 10px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .calculate-all-players-total-points-button:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .inning-no-label{
+         text-align: center;
+         color: black;
+         font-weight: bold;
+         margin-left: 30px;
+         margin-right: 10px;
+         margin-top: 10px;
+         padding: 5px;
+    }
+     .add-inning-runs-input{
+         text-align: left;
+         color: black;
+         margin-right: 10px;
+         padding: 3px;
+    }
+     .add-inning-strike-rate-input{
+         text-align: left;
+         color: black;
+         margin-right: 10px;
+         padding: 3px;
+    }
+     .add-inning-wickets-input{
+         text-align: left;
+         color: black;
+         margin-right: 10px;
+         padding: 3px;
+    }
+     .add-inning-economy-rate-input{
+         text-align: left;
+         color: black;
+         margin-right: 10px;
+         padding: 3px;
+    }
+     .add-inning-runs-input-dy{
+         text-align: left;
+         color: black;
+         margin-right: 10px;
+         margin-bottom: 10px;
+         padding: 3px;
+    }
+     .add-inning-strike-rate-input-dy{
+         text-align: left;
+         color: black;
+         margin-right: 10px;
+         margin-bottom: 10px;
+         padding: 3px;
+    }
+     .add-inning-wickets-input-dy{
+         text-align: left;
+         color: black;
+         margin-right: 10px;
+         margin-bottom: 10px;
+         padding: 3px;
+    }
+     .add-inning-economy-rate-input-dy{
+         text-align: left;
+         color: black;
+         margin-right: 10px;
+         margin-bottom: 10px;
+         padding: 3px;
+    }
+     .add-inning-points{
+         text-align: left;
+         color: black;
+         margin-right: 10px;
+         padding: 3px;
+    }
+     .confirm-player-inning-button{
+         text-align: center;
+         color: black;
+         margin-right: 10px;
+         padding: 5px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .confirm-player-inning-button:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .calculate-player-total-points{
+         text-align: center;
+         color: black;
+         margin-left: 30px;
+         margin-right: 10px;
+         margin-bottom: 10px;
+         padding: 8px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .calculate-player-total-points:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .player-total-points{
+         margin-left: 30px;
+    }
+     .confirm-player-button{
+         text-align: center;
+         color: black;
+         margin-right: 10px;
+         margin-bottom: 10px;
+         padding: 8px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .confirm-player-button:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .confirm-team-btn{
+         text-align: center;
+         color: black;
+         margin-left: 30px;
+         margin-bottom:15px;
+         padding: 6px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .confirm-team-btn:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     #all-teams-total-points{
+         margin-left: 30px;
+         font-size: 20px;
+    }
+     .calculate-total-points-btn{
+         text-align: center;
+         margin-left: 30px;
+         padding: 8px;
+         color: black;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .calculate-total-points-btn:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     #total-points-display{
+         display: none;
+         margin-left: 30px;
+         margin-bottom:10px;
+         font-size: 20px;
+    }
+     #all-players-total-points-display{
+         display: none;
+         margin-left: 30px;
+         margin-bottom:10px;
+         font-size: 20px;
+    }
+     #all-teams-total-points-display{
+         display: none;
+         margin-left: 30px;
+         margin-bottom:10px;
+         font-size: 20px;
+    }
+}
+
+
+ @media only screen and (max-width: 600px) {
+    /* Styles for screens up to 600px wide (mobile devices) */
+     .footer {
+         width: 100%;
+         text-align: center;
+         color: #336699;
+    }
+     .player-section-h2{
+         text-align: left;
+         color: black;
+         margin-top: 100px;
+         margin-left: 10px;
+    }
+     .add-player-btn {
+         margin-left: 20px;
+         color: #fff;
+         border-radius: 10px;
+         border: none;
+         padding: 10px;
+         text-align: center;
+         text-decoration: none;
+         display: block;
+         background-color: #336699;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         font-size: 12px;
+         font-weight: bold;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .add-player-btn:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .team-section-h2{
+         text-align: left;
+         color: black;
+         margin-top: 20px;
+         margin-left: 10px;
+    }
+     .team-section-h3{
+         margin-left: 20px;
+         margin-bottom:5px;
+         font-size: 20px;
+    }
+     .player-number-h3{
+         text-align: left;
+         color: black;
+         margin-top: 10px;
+         margin-left: 20px;
+    }
+     .player-name-input{
+         text-align: left;
+         color: black;
+         width: 100px;
+         margin-left: 20px;
+         margin-right: 5px;
+         padding: 5px;
+         font-size: 12px;
+    }
+     .payer-role-dropdown-menu{
+         text-align: center;
+         color: black;
+         width: 80px;
+         margin-right: 5px;
+         padding: 5px;
+         font-size: 12px;
+    }
+     .add-inning{
+         text-align: center;
+         color: black;
+         margin-right: 5px;
+         padding: 6px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .add-inning:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .toggle-button{
+         text-align: center;
+         color: black;
+         margin-right: 5px;
+         padding: 6px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .toggle-button:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .calculate-all-players-total-points-button{
+         text-align: center;
+         color: black;
+         margin-left: 20px;
+         margin-right: 10px;
+         padding: 10px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .calculate-all-players-total-points-button:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .inning-no-label{
+         text-align: center;
+         color: black;
+         font-weight: bold;
+         margin-left: 20px;
+         margin-right: 5px;
+         margin-top: 10px;
+         padding: 5px;
+         font-size: 12px;
+    }
+     .add-inning-runs-input{
+         text-align: left;
+         color: black;
+         width: 65px;
+         margin-right: 5px;
+         padding: 3px;
+         font-size: 12px;
+    }
+     .add-inning-strike-rate-input{
+         text-align: left;
+         color: black;
+         width: 65px;
+         margin-right: 5px;
+         padding: 3px;
+         font-size: 12px;
+    }
+     .add-inning-wickets-input{
+         text-align: left;
+         color: black;
+         width: 65px;
+         margin-right: 5px;
+         padding: 3px;
+         font-size: 12px;
+    }
+     .add-inning-economy-rate-input{
+         text-align: left;
+         color: black;
+         width: 65px;
+         margin-right: 5px;
+         padding: 3px;
+         font-size: 12px;
+    }
+     #add-inning-economy-rate-input-all-rounder{
+         margin-top: 15px;
+         margin-left: 92px;
+         margin-right: 10px;
+    }
+     .add-inning-points{
+         text-align: left;
+         color: black;
+         width: 50px;
+         margin-right: 5px;
+         padding: 3px;
+         font-size: 12px;
+    }
+     .confirm-player-inning-button{
+         text-align: center;
+         color: black;
+         margin-right: 0;
+         padding: 5px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .confirm-player-inning-button:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .calculate-player-total-points{
+         text-align: center;
+         color: black;
+         margin-left: 20px;
+         margin-right: 10px;
+         margin-bottom: 10px;
+         padding: 8px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .calculate-player-total-points:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .player-total-points{
+         margin-left: 20px;
+    }
+     .confirm-player-button{
+         text-align: center;
+         color: black;
+         margin-right: 10px;
+         margin-bottom: 10px;
+         padding: 8px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .confirm-player-button:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     .confirm-team-btn{
+         text-align: center;
+         color: black;
+         margin-left: 20px;
+         margin-bottom:15px;
+         padding: 6px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .confirm-team-btn:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     #all-teams-total-points{
+         margin-left: 20px;
+         font-size: 18px;
+    }
+     .calculate-total-points-btn{
+         text-align: center;
+         margin-left: 20px;
+         padding: 8px;
+         color: black;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         background-color: #336699;
+         color: #fff;
+         transition: background-color 0.3s ease-in-out;
+    }
+     .calculate-total-points-btn:hover {
+         background-color: #2e5c8a;
+         cursor: pointer;
+    }
+     #total-points-display{
+         display: none;
+         margin-left: 20px;
+         margin-bottom:10px;
+         font-size: 18px;
+    }
+     #all-players-total-points-display{
+         display: none;
+         margin-left: 20px;
+         margin-bottom:10px;
+         font-size: 18px;
+    }
+     #all-teams-total-points-display{
+         display: none;
+         margin-left: 20px;
+         margin-bottom:10px;
+         font-size: 18px;
+    }
+     table {
+         font-size: 14px;
+    }
+     th, td {
+         padding: 6px;
+    }
+     .flash-success {
+         text-align: center;
+         list-style: none;
+         border: 1px solid #ccc;
+         border-radius: 10px;
+         background-color: #32de84;
+         color: white;
+         padding: 1%;
+         position: fixed;
+         top: 5%;
+         right: 30%;
+         width: 35%;
+         z-index: 9999;
+         opacity: 0;
+         animation: showFlash 4s ease-in-out forwards;
+    }
+     .flash-error{
+         text-align: center;
+         list-style: none;
+         border: 1px solid #ccc;
+         border-radius: 10px;
+         background-color: #ff8080;
+         color: white;
+         padding: 1%;
+         position: fixed;
+         top: 5%;
+         right: 30%;
+         width: 35%;
+         z-index: 9999;
+         opacity: 0;
+         animation: showFlash 4s ease-in-out forwards;
+    }
+     @keyframes showFlash {
+         0% {
+             opacity: 0;
+        }
+         10% {
+             opacity: 1;
+        }
+         90% {
+             opacity: 1;
+        }
+         100% {
+             opacity: 0;
+        }
+    }
+}
+
+ .logout{
+     text-align: center;
+}
+
+ .logo {
+     position: absolute;
+     top: 0;
+     left: 0;
+     margin-top: 10px;
+     margin-left:10px;
+     width: 40px;
+     height: 40px;
+     border-radius: 20px;
+     animation: logo-spin 2s infinite linear;
+}
+
+ @keyframes logo-spin {
+     0% {
+         transform: rotate(0deg);
+    }
+     100% {
+         transform: rotate(360deg);
+    }
+}
+
+ h1{
+     text-align: center;
+     color: #336699;
+     position: absolute;
+     top:0%;
+     margin-top: 10px;
+     margin-left: 50px;
+}
+
+ #menu {
+     width: 150px;
+     height: 0px;
+     background-color: #6699CC;
+     position: absolute;
+     top: 50px;
+     right: 10px;
+     overflow: hidden;
+     transition: height 1s ease-out;
+     font-size: 17px;
+     background-color: #336699;
+     color: #fff;
+     border-radius: 5px;
+}
+
+ #menu a {
+     display: block;
+     padding: 10px;
+     color: white;
+     text-decoration: none;
+}
+
+ #menu a:hover {
+     background-color: #2e5c8a;
+}
+
+ #menu-toggle {
+     position: absolute;
+     top: 10px;
+     right: 20px;
+     color: black;
+     cursor: pointer;
+     z-index: 1;
+}
+
+ #menu-toggle:hover {
+     color: white;
+}
+
+ #menu-toggle span {
+     display: block;
+     height: 2px;
+     width: 25px;
+     margin-bottom: 5px;
+     background-color: black;
+     border-radius: 2px;
+     transition: transform 0.3s ease-out;
+}
+
+ #menu-toggle.active span:nth-of-type(1) {
+     transform: rotate(45deg) translate(5px, 5px);
+}
+
+ #menu-toggle.active span:nth-of-type(2) {
+     opacity: 0;
+}
+
+ #menu-toggle.active span:nth-of-type(3) {
+     transform: rotate(-45deg) translate(5px, -5px);
+}
+
+ .flash-success {
+     text-align: center;
+     list-style: none;
+     border: 1px solid #ccc;
+     border-radius: 10px;
+     background-color: #32de84;
+     color: white;
+     padding: 10px;
+     position: fixed;
+     top: 3%;
+     right: 40%;
+     width: 15%;
+     z-index: 9999;
+     opacity: 0;
+     animation: showFlash 4s ease-in-out forwards;
+}
+
+ .flash-error{
+     text-align: center;
+     list-style: none;
+     border: 1px solid #ccc;
+     border-radius: 10px;
+     background-color: #ff8080;
+     color: white;
+     padding: 10px;
+     position: fixed;
+     top: 65px;
+     right: 37%;
+     width: 25%;
+     z-index: 9999;
+     opacity: 0;
+     animation: showFlash 4s ease-in-out forwards;
+}
+
+ @keyframes showFlash {
+     0% {
+         opacity: 0;
+    }
+     10% {
+         opacity: 1;
+    }
+     90% {
+         opacity: 1;
+    }
+     100% {
+         opacity: 0;
+    }
+}
+ 

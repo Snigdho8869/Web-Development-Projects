@@ -1,0 +1,257 @@
+body {
+    background-color: #F2F2F2;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+@media only screen and (min-width: 600px) {
+    /* Styles for screens wider than 600px (computers) */
+
+    form {
+        margin-top: 8%;
+        margin-left: 33%;
+        border: 1px solid #ccc;
+        padding: 1%;
+        text-align: left;
+        width: 30%;
+        border-radius: 5%;
+    }
+
+    input[type=text],
+    input[type=password] {
+        width: 100%;
+        padding: 3%;
+        margin: 1.8%;
+        margin-left: 0;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 1%;
+    }
+
+    input[type=submit] {
+        background-color: #336699;
+        color: #fff;
+        padding: 3.4% 5%;
+        margin: 1.8%;
+        margin-left: 40%;
+        border: none;
+        border-radius: 3%;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #2e5c8a;
+    }
+
+    a {
+        color: #336699;
+        text-decoration: none;
+    }
+
+    .footer {
+        width: 100%;
+        text-align: center;
+        color: #336699;
+        font-size: 18px;
+    }
+
+    .flash-success,
+    .flash-error {
+        list-style: none;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 0.7%;
+        position: fixed;
+        top: 11%;
+        right: 37%;
+        width: 25%;
+        z-index: 9999;
+        opacity: 0;
+        animation: showFlash 4s ease-in-out forwards;
+    }
+
+    .flash-error {
+        background-color: #ff8080;
+        color: white;
+    }
+
+    .flash-success {
+        background-color: #32de84;
+        color: white;
+    }
+
+    @keyframes showFlash {
+        0% {
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 1;
+        }
+
+        90% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 1.6%;
+        margin-left: 39.5%;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        animation: logo-spin 2s infinite linear;
+    }
+
+    @keyframes logo-spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    h1 {
+        text-align: center;
+        color: #336699;
+        position: absolute;
+        top: 0%;
+        margin-top: 1.7%;
+        margin-left: 42.5%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    /* Styles for screens up to 600px wide (mobile devices) */
+
+    form {
+        margin-top: 25%;
+        margin-left: 9%;
+        border: 1px solid #ccc;
+        padding: 3%;
+        text-align: left;
+        width: 75%;
+        border-radius: 5%;
+    }
+
+    input[type=text],
+    input[type=password] {
+        width: 100%;
+        padding: 3%;
+        margin: 1.8%;
+        margin-left: 0;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 1%;
+    }
+
+    input[type=submit] {
+        background-color: #336699;
+        color: #fff;
+        padding: 3.4% 5%;
+        margin: 1.8%;
+        margin-left: 40%;
+        border: none;
+        border-radius: 3%;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #2e5c8a;
+    }
+
+    a {
+        color: #336699;
+        text-decoration: none;
+    }
+
+    .footer {
+        width: 100%;
+        text-align: center;
+        color: #336699;
+    }
+
+    .flash-success,
+    .flash-error {
+        list-style: none;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 0.7%;
+        position: fixed;
+        top: 5%;
+        right: 30%;
+        width: 35%;
+        z-index: 9999;
+        opacity: 0;
+        animation: showFlash 4s ease-in-out forwards;
+    }
+
+    .flash-error {
+        background-color: #ff8080;
+        color: white;
+    }
+
+    .flash-success {
+        background-color: #32de84;
+        color: white;
+    }
+
+    @keyframes showFlash {
+        0% {
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 1;
+        }
+
+        90% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 2%;
+        margin-left: 1.5%;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        animation: logo-spin 2s infinite linear;
+    }
+
+    @keyframes logo-spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    h1 {
+        text-align: center;
+        color: #336699;
+        position: absolute;
+        top: 0%;
+        margin-top: 2.3%;
+        margin-left: 10%;
+        font-size: 30px;
+    }
+}
