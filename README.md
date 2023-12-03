@@ -10,3 +10,5 @@
 - **Brick Breaker Game:** Relive the classic gaming experience with my Brick Breaker Game. Break bricks, score points, and enjoy the nostalgia of this retro arcade game, all within your web browser.
 
 - **BrainDive: Web Development Showcase:** Explore a portfolio of web development projects that demonstrate creativity and technical skills.
+
+- **Cricket Fantasy League:** This web application allows users to create and manage their fantasy cricket teams, participate in tournaments, and compete with friends.
